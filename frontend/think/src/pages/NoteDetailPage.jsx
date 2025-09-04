@@ -68,54 +68,54 @@ const NoteDetailPage = () => {
 
   if(loading){
     return(
-      <div className='flex items-center justify-center min-h-screen bg-base-200'>
+      <div className='flex items-center justify-center min-h-screen bg-[#DCDCDC]'>
         <LoaderIcon className='animate-spin size-10 ' />
       </div>
     )
   }
 
   return(
-    <div className='min-h-screen bg-base-200'>
+    <div className='min-h-screen bg-[#dcdcdc] text-[#303030]'>
       <div className='container px-4 py-8 mx-auto'>
        <div className='max-w-2xl mx-auto'>
          <div className='flex items-center justify-between mb-6'>
-          <Link to="/" className='btn btn-ghost'>
+          <Link to="/" className='btn btn-ghost hover:bg-[rgba(194,194,194,0.7)]'>
           <ArrowLeftIcon  className='w-5 h-5'/>
           Back to Notes
           </Link>
-          <button onClick={handleDelete} className='btn btn-error btn-outline'>
+          <button onClick={handleDelete} className='text-red-500 border-red-500 btn btn-error btn-outline'>
             <Trash2Icon className='w-5 h-5' />
             Delete Note
           </button>
         </div>
 
-        <div className="card bg-base-100">
+        <div className="card bg-[#efefef] shadow-lg">
           <div className="card-body">
             <div className='mb-4 form-control'>
               <label className='label'>
-                <span className='label-text'>Title</span>
+                <span className='label-text text-[#303030]'>Title</span>
               </label>
               <input 
               type="text"
               placeholder='Note Title'
-              className='input input-bordered'
+              className='bg-white shadow-lg input input-bordered placeholder-slate-500'
               value={note.title}
               onChange={(e) => setNote({...note, title: e.target.value})} />
             </div>
 
             <div className="mb-4 form-control">
               <label className="label">
-                <span className="label-text">Content</span>
+                <span className="label-text text-[#303030]">Content</span>
               </label>
               <textarea 
                placeholder='Write your note here'
-               className='h-32 textarea textarea-bordered'
+               className='h-32 bg-white shadow-lg textarea textarea-bordered placeholder-slate-500'
                value={note.content}
                onChange={(e) => setNote({...note, content: e.target.value})}/>
             </div>
 
             <div className="justify-end card-actions">
-              <button className='btn btn-primary' disabled={saving} onClick={handleSave}>
+              <button className='btn btn-primary text-[#f2f2f2]' disabled={saving} onClick={handleSave}>
                 {saving ? "Saving.." : "Save Changes"}
               </button>
             </div>

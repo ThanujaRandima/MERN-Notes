@@ -6,6 +6,7 @@ import axios from "axios"
 import toast from "react-hot-toast"
 import Notecard from "../components/Notecard";
 import api from "../lib/axios";
+import { LoaderIcon } from "lucide-react";
 
 const Homepage = () => {
 
@@ -42,9 +43,13 @@ const Homepage = () => {
       {isRateLimited && <RateLimitedUI />}
 
       <div className="p-4 mx-auto mt-6 max-w-7xl">
-        {loading && <div className="py-10 text-center text-primary">Loading...</div>}
+        {loading &&  (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/70">
+    <LoaderIcon className="w-12 h-12 text-black animate-spin" />
+  </div>
+        )}
 
-        {notes.length === 0 && !isRateLimited && <NotesNotFound />}
+        {!loading && notes.length === 0 && !isRateLimited && <NotesNotFound />}
 
         {notes.length > 0 && !isRateLimited && (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
